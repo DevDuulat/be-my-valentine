@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <title>Valentine</title>
+</head>
+<body x-data="{ isValentine: false, isNoClicked: false }" 
+      :class="isValentine 
+          ? 'bg-[url(\'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHpiczM0dXJldTZudGxya3lpd2ZqZmlzeDJzejN1Z3U3dnF6cW1hMCZlcD12MV9pbnRlcm5naWZfYnlfaWQmY3Q9Zw/DorxfW5xBGSG8bVxRa/giphy.gif\')] bg-cover'
+          : isNoClicked 
+            ? 'bg-[url(\'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXJ0dmowbWt3OWJpZGs5a255aHd4ZnVkcjNqZ2w2YnNvb3pvajhpZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/M28rUlcjueKUE/giphy.gif\')] bg-cover' 
+            : 'bg-[url(\'/img/love-svgrepo-com.svg\')] bg-repeat bg-center'"
+      class="h-screen transition-all duration-500">
+    
+    <div class="h-screen flex items-center justify-center bg-white/10">
+        <div class="container text-center py-20 w-1/2 h-[50vh] bg-white rounded-xl shadow-lg"
+             x-show="!isValentine && !isNoClicked" x-transition>
+            
+            <h1 class="text-center text-black text-3xl">Do you want to be my Valentine?</h1>
+            
+            <!-- Кнопка "Yes" -->
+            <button class="inline-block rounded-sm bg-indigo-600 px-12 py-3 m-3 text-sm font-medium text-white transition hover:scale-110 hover:rotate-2 focus:ring-3 focus:outline-none"
+                @click="isValentine = true">
+                Yes
+            </button>
+            
+            <!-- Кнопка "No" -->
+            <a class="inline-block rounded-sm border border-current px-12 py-3 text-sm font-medium text-indigo-600 transition hover:scale-110 hover:rotate-2 focus:ring-3 focus:outline-none"
+                @click="isNoClicked = true">
+                No
+            </a>
+
+        </div>
+    </div>
+</body>
+</html>
