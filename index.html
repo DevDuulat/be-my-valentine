@@ -3,37 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <title>Valentine</title>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.5s ease-in-out;
+            background: url('/img/love-svgrepo-com.svg') repeat center;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+            width: 50%;
+            height: 25vh;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: black;
+            font-size: 24px;
+        }
+        button, a {
+            display: inline-block;
+            padding: 12px 24px;
+            margin: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s;
+            cursor: pointer;
+        }
+        button {
+            background: indigo;
+            color: white;
+            border: none;
+        }
+        button:hover, a:hover {
+            transform: scale(1.1) rotate(2deg);
+        }
+        a {
+            color: indigo;
+            border: 2px solid indigo;
+        }
+    </style>
 </head>
 <body x-data="{ isValentine: false, isNoClicked: false }" 
-      :class="isValentine 
-          ? 'bg-[url(\'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHpiczM0dXJldTZudGxya3lpd2ZqZmlzeDJzejN1Z3U3dnF6cW1hMCZlcD12MV9pbnRlcm5naWZfYnlfaWQmY3Q9Zw/DorxfW5xBGSG8bVxRa/giphy.gif\')] bg-cover'
+      :style="isValentine 
+          ? 'background: url(\'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExcHpiczM0dXJldTZudGxya3lpd2ZqZmlzeDJzejN1Z3U3dnF6cW1hMCZlcD12MV9pbnRlcm5naWZfYnlfaWQmY3Q9Zw/DorxfW5xBGSG8bVxRa/giphy.gif\') center/cover' 
           : isNoClicked 
-            ? 'bg-[url(\'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXJ0dmowbWt3OWJpZGs5a255aHd4ZnVkcjNqZ2w2YnNvb3pvajhpZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/M28rUlcjueKUE/giphy.gif\')] bg-cover' 
-            : 'bg-[url(\'/img/love-svgrepo-com.svg\')] bg-repeat bg-center'"
-      class="h-screen transition-all duration-500">
+            ? 'background: url(\'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExMXJ0dmowbWt3OWJpZGs5a255aHd4ZnVkcjNqZ2w2YnNvb3pvajhpZiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/M28rUlcjueKUE/giphy.gif\') center/cover' 
+            : ''">
     
-    <div class="h-screen flex items-center justify-center bg-white/10">
-        <div class="container text-center py-20 w-1/2 h-[50vh] bg-white rounded-xl shadow-lg"
-             x-show="!isValentine && !isNoClicked" x-transition>
-            
-            <h1 class="text-center text-black text-3xl">Do you want to be my Valentine?</h1>
-            
-            <!-- Кнопка "Yes" -->
-            <button class="inline-block rounded-sm bg-indigo-600 px-12 py-3 m-3 text-sm font-medium text-white transition hover:scale-110 hover:rotate-2 focus:ring-3 focus:outline-none"
-                @click="isValentine = true">
-                Yes
-            </button>
-            
-            <!-- Кнопка "No" -->
-            <a class="inline-block rounded-sm border border-current px-12 py-3 text-sm font-medium text-indigo-600 transition hover:scale-110 hover:rotate-2 focus:ring-3 focus:outline-none"
-                @click="isNoClicked = true">
-                No
-            </a>
-
-        </div>
+    <div class="container" x-show="!isValentine && !isNoClicked" x-transition>
+        <h1>Do you want to be my Valentine?</h1>
+        <button @click="isValentine = true">Yes</button>
+        <a @click="isNoClicked = true">No</a>
     </div>
 </body>
 </html>
